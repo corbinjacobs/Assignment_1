@@ -38,7 +38,7 @@ int main()
 	cout << "Data from text file -------------------------------------------" << endl;
 	
 	// .pgm image is stored in inputFileName, change the path in your program appropriately
-	char* inputFileName = "C:\\Users\\tzimiro\\Desktop\\Projects\\assigment1213_A\\DataFile\\DataFile\\logo_shuffled.txt"; 
+	char* inputFileName = "C:\\Users\\Corbin\\Downloads\\Assignment 1 - files\\Assignment 1 - files\\Task 1 - files\\logo_shuffled.txt"; 
 	input_data = readTXT(inputFileName, M, N);
 
 	/*
