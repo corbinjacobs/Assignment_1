@@ -14,6 +14,28 @@ using namespace std;
 // Memory allocation is performed inside readTXT
 double* readTXT(char *fileName, int sizeR, int sizeC);
 
+double getVal(double B[], int N, int i, int j);
+//double getVal(double* B, int i, int j); k = i*N + j this helps find a location in a matrix / 2d array.
+
+class Matrix{ //matrix class contains the parametres 
+public:
+
+	Matrix(int sizeR, int sizeC, double val);
+	Matrix(int sizeR, int sizeC, double* pData);
+	~Matrix();
+
+private:
+	int M; //number of rows
+	int N; //number of columns
+	double* data;
+
+};
+
+Matrix::Matrix(int sizeR, int sizeC, double Val)
+{
+
+}
+
 // Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 
 // and stores .pgm in filename
 // Use Q = 255 for greyscale images and Q=1 for binary images.
@@ -30,8 +52,6 @@ int main()
 	//e.g. for task 2, Wally_grey, M = 49, N =  36
 	int M = 512; int N = 512;
 
-
-
 	// input_data is a pointer to a 1D array of M*N doubles stored in heap. Memory allocation is performed 
 	// inside readTXT. readTXT will read an image (in .pgm format) of size MxN and will  store the result in input_data.
 	// once you're done with data DO NOT forget to delete the memory as in the end of this main() function
@@ -43,6 +63,8 @@ int main()
 	// .pgm image is stored in inputFileName, change the path in your program appropriately
 	char* inputFileName = "C:\\Users\\Corbin\\Downloads\\Assignment 1 - files\\Assignment 1 - files\\Task 1 - files\\logo_shuffled.txt"; 
 	input_data = readTXT(inputFileName, M, N);
+	
+	Matrix A(512, 512, input_data); //stating the values in the matrix and where the image is.
 
 	/*
 
