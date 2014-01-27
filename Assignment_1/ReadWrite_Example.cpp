@@ -31,11 +31,15 @@ private:
 
 };
 
-Matrix::Matrix(int sizeR, int sizeC, double Val)
+Matrix::Matrix(int sizeR, int sizeC, double Val) //original matrix values
 {
 
 }
 
+Matrix::Matrix(int sizeR, int sizeC, double* input_data) //heap data
+{
+
+}
 // Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 
 // and stores .pgm in filename
 // Use Q = 255 for greyscale images and Q=1 for binary images.
@@ -50,7 +54,8 @@ int main()
 	//e.g. for task 1: logo_with_noise and logo_shuffled, M = 512, N = 512
 	//e.g. for task 2, Cluttered_scene, M = 768, N = 1024
 	//e.g. for task 2, Wally_grey, M = 49, N =  36
-	int M = 512; int N = 512;
+	const int M = 512; 
+	const int N = 512;//the values of the matrix are constant.
 
 	// input_data is a pointer to a 1D array of M*N doubles stored in heap. Memory allocation is performed 
 	// inside readTXT. readTXT will read an image (in .pgm format) of size MxN and will  store the result in input_data.
@@ -64,7 +69,7 @@ int main()
 	char* inputFileName = "C:\\Users\\Corbin\\Downloads\\Assignment 1 - files\\Assignment 1 - files\\Task 1 - files\\logo_shuffled.txt"; 
 	input_data = readTXT(inputFileName, M, N);
 	
-	Matrix A(512, 512, input_data); //stating the values in the matrix and where the image is.
+	Matrix A(M, N, input_data); //stating the values in the matrix and where the image is.
 
 	/*
 
