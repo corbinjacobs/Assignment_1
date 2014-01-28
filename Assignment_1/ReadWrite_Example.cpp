@@ -19,7 +19,10 @@ double getVal(double B[], int N, int i, int j);
 
 class Matrix{ //matrix class contains the parametres 
 public:
-
+	int equation(int i, int j)  //this is done in one line not outside of the class
+	{
+		return data[i*N + j];
+	}
 	Matrix(int sizeR, int sizeC, double val);
 	Matrix(int sizeR, int sizeC, double* pData);
 	~Matrix();
