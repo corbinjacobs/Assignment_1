@@ -22,7 +22,7 @@ public:
 	Matrix getBlock(int startrow, int endrow, int startcolum, int endcolum);//memeber function for the getblock sections on the matrix
 	void setvalues(int i, int j, double values){ data[i*N + j] = values; }//puts the values into the equation to place them in the crorect location in the matrix.
 	double equation(int i, int j) const {	return data[i*N + j]; } //this is done in one line not outside of the class
-	Matrix(const Matrix & obj);
+	Matrix(const Matrix& C);
 	Matrix(int sizeR, int sizeC, double val);
 	Matrix(int sizeR, int sizeC, double* pData);
 	//~Matrix();
@@ -34,9 +34,19 @@ private:
 
 };
 
-Matrix::Matrix(int sizeR, int sizeC, double Val) //original matrix values
+Matrix::Matrix(int sizeR, int sizeC, double Val) //original matrix values stack data
 {
+	M = sizeR;//declaring the parametres of the matrix
+	N = sizeC;
+	data = new double[M*N];//creating a new memory allocation in the heap.
 
+	for (int i = 0; i < M; i++)//the for loop searches through each colloum and row.
+	{
+		for (int j = 0; j < N; j++)
+		{
+			data[i*N + j] = Val;
+		}
+	}
 }
 
 Matrix::Matrix(int sizeR, int sizeC, double* input_data) //heap data
@@ -49,7 +59,7 @@ Matrix::Matrix(int sizeR, int sizeC, double* input_data) //heap data
 	{
 		for (int j = 0; j < N; j++)
 		{
-			data[i*N + j] = input_data[i*N + j];
+			data[i*N + j] = input_data[i*N + j];//
 		}
 	}
 }
@@ -109,7 +119,7 @@ int main()
 	CODE TO PROCESS input_data SHOULD BE WRITTEN HERE!! (after removing the comments:)
 
 	*/
-
+	//forloop here for the matrix
 	// writes data back to .pgm file stored in outputFileName
 	char* outputFileName = "C:\\Users\\Corbin\\Downloads\\Assignment 1 - files\\Assignment 1 - files\\Task 1 - files\\logo_restored.pgm";
 	// Use Q = 255 for greyscale images and 1 for binary images.
