@@ -19,8 +19,10 @@ double getVal(double B[], int N, int i, int j);
 
 class Matrix{ //matrix class contains the parametres 
 public:
+	Matrix getBlock(int startrow, int endrow, int startcolum, int endcolum);//memeber function for the getblock sections on the matrix
+	void setvalues(int i, int j, double values){ data[i*N + j] = values; }//puts the values into the equation to place them in the crorect location in the matrix.
 	double equation(int i, int j) const {	return data[i*N + j]; } //this is done in one line not outside of the class
-	
+	Matrix(const Matrix & obj);
 	Matrix(int sizeR, int sizeC, double val);
 	Matrix(int sizeR, int sizeC, double* pData);
 	//~Matrix();
@@ -51,6 +53,24 @@ Matrix::Matrix(int sizeR, int sizeC, double* input_data) //heap data
 		}
 	}
 }
+Matrix::Matrix(const Matrix & obj)
+{
+	
+};
+
+Matrix Matrix::getBlock(int startrow, int endrow, int startcolum, int endcolum)//pulls out the requested block form the input values.
+{
+	Matrix C(endrow - startrow + 1, endcolum - startcolum + 1, 0.0);
+	for (int i = startrow; i <= endrow; i++)
+	{
+		for (int j = startcolum; j <= endcolum; j++)
+		{
+			C.setvalues(i - startrow, j - startcolum, data[i*N + j]);
+		}
+	}
+	return C;
+};
+
 // Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 
 // and stores .pgm in filename
 // Use Q = 255 for greyscale images and Q=1 for binary images.
