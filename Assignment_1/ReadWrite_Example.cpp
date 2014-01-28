@@ -19,13 +19,11 @@ double getVal(double B[], int N, int i, int j);
 
 class Matrix{ //matrix class contains the parametres 
 public:
-	int equation(int i, int j)  //this is done in one line not outside of the class
-	{
-		return data[i*N + j];
-	}
+	double equation(int i, int j) const {	return data[i*N + j]; } //this is done in one line not outside of the class
+	
 	Matrix(int sizeR, int sizeC, double val);
 	Matrix(int sizeR, int sizeC, double* pData);
-	~Matrix();
+	//~Matrix();
 
 private:
 	int M; //number of rows
@@ -41,7 +39,17 @@ Matrix::Matrix(int sizeR, int sizeC, double Val) //original matrix values
 
 Matrix::Matrix(int sizeR, int sizeC, double* input_data) //heap data
 {
+	M = sizeR;//declaring the parametres of the matrix
+	N = sizeC;
+	data = new double[M*N];//creating a new memory allocation in the heap.
 
+	for (int i = 0; i < M; i++)//the for loop searches through each colloum and row.
+	{
+		for (int j = 0; j < N; j++)
+		{
+			data[i*N + j] = input_data[i*N + j];
+		}
+	}
 }
 // Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 
 // and stores .pgm in filename
@@ -74,6 +82,8 @@ int main()
 	
 	Matrix A(M, N, input_data); //stating the values in the matrix and where the image is.
 
+	cout << A.equation(4, 3) << endl;
+	system("PAUSE");
 	/*
 
 	CODE TO PROCESS input_data SHOULD BE WRITTEN HERE!! (after removing the comments:)
