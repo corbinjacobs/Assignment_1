@@ -114,6 +114,16 @@ int main()
 
 	cout << A.equation(4, 3) << endl;
 	system("PAUSE");
+
+	// for (int i = startrow; int i < 170 = 255 else 1; i <= endrow; i++) not sure if needed but trying to take the data and change its colour value
+	//{
+		//for (int j = startcolum; j <= endcolum; j++)
+		//{
+			//C.setvalues(i - startrow, j - startcolum, data[i*N + j]);
+		//}
+	//}
+	//return C;
+//};
 	/*
 
 	CODE TO PROCESS input_data SHOULD BE WRITTEN HERE!! (after removing the comments:)
